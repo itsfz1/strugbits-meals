@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { X } from "lucide-react"
 
 interface ModalProps {
@@ -20,14 +21,14 @@ export default function Modal({ isOpen, onClose, onSave }: ModalProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+      <div className="bg-white p-6 rounded-lg shadow-lg min-w-96">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Select Week</h2>
+          <h2 className="text-xl font-bold text-black">Select Week</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
             <X size={24} />
           </button>
         </div>
-        <div className="flex justify-between mb-6">
+        <div className="flex gap-x-3 mb-6 p-4">
           {weeks.map((week) => (
             <button
               key={week}

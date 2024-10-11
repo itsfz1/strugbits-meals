@@ -1,11 +1,10 @@
-import React, { useState } from "react"
-
 interface NavbarProps {
   onAddToWeek: () => void
+  activeTab: string
+  setActiveTab: (tab: string) => void
 }
 
-export default function Navbar({ onAddToWeek }: NavbarProps) {
-  const [activeTab, setActiveTab] = useState("All Meals")
+export default function Navbar({ onAddToWeek, activeTab, setActiveTab }: NavbarProps) {
   const tabs = ["All Meals", "Week 1", "Week 2", "Week 3", "Week 4"]
 
   return (
@@ -29,7 +28,10 @@ export default function Navbar({ onAddToWeek }: NavbarProps) {
             </nav>
             <button
               onClick={onAddToWeek}
-              className="bg-[#0f3460] text-white px-4 py-2 ml-28 rounded-md text-sm font-bold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0f3460]"
+              disabled={activeTab !== "All Meals"}
+              className={`bg-[#0f3460] text-white px-4 py-2 ml-28 rounded-md text-sm font-bold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0f3460] ${
+                activeTab !== "All Meals" ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
               Add to Week
             </button>
